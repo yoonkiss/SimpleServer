@@ -1,3 +1,13 @@
+init
+- socket init, bind
+- make session pool
+
+start IO threads
+
+start Accept (block)
+
+finalize
+
 1.  비동기 네트워크 입출력 및 다수의 클라이언트 세션 처리
 Win32 API의 Overlapped I/O를 이용
 
@@ -50,3 +60,6 @@ Half-Sync/Half-Async 패턴과 Leader/Followers 패턴
 
 네트워크 처리는 Async 방식으로 데이터의 처리(로직 스레드)는 Sync 방식으로 처리하는 방식. Async Layer와 Sync Layer와의 통신을 위해 Message Queue가 필요.
 http://egloos.zum.com/javawork/v/1818696
+
+https://github.com/jacking75/codes_book_onlinegameserver
+온라인 게임 서버 (지은이 강정중) 책의 예제 코드를 리팩토링

@@ -26,6 +26,10 @@ public:
 
 	SOCKET* GetListenSocket()  { return &mListenSocket;  }
 
+    static char mAcceptBuf[64];
+    static LPFN_DISCONNECTEX mFnDisconnectEx;
+    static LPFN_ACCEPTEX mFnAcceptEx;
+
 private:
 
 	static unsigned int WINAPI IoWorkerThread(LPVOID lpParam);

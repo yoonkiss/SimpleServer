@@ -50,6 +50,23 @@ bool ClientSession::PostAccept()
 	OverlappedAcceptContext* acceptContext = new OverlappedAcceptContext(this);
 
 	//TODO : AccpetEx를 이용한 구현.
+    DWORD bytes = 0;
+    DWORD flags = 0;
+    acceptContext->mWsaBuf.len = 0;
+    acceptContext->mWsaBuf.buf = nullptr;
+
+    if (FALSE == AcceptEx(*GIocpManager->GetListenSocket(), mSocket, GIocpManager->mAcceptBuf, 0,
+        sizeof(SOCKADDR_IN) + 16, sizeof(SOCKADDR_IN) + 16, &bytes, (LPOVERLAPPED)acceptContext))
+    {
+        if (WSAGetLastError() != WSA_IO_PENDING)
+        {
+            DeleteIoContext(acceptContext);
+            printf_s("AcceptEx Error : %d\n", GetLastError());
+
+            return false;
+        }
+    }
+
 
 	return true;
 }

@@ -38,6 +38,8 @@ struct OverlappedIOContext
 	
 } ;
 
+//TODO: 아래의 OverlappedXXXXContext는 ObjectPool<>을 사용하도록 수정
+
 struct OverlappedSendContext : public OverlappedIOContext
 {
 	OverlappedSendContext(ClientSession* owner) : OverlappedIOContext(owner, IO_SEND)
